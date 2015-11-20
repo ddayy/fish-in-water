@@ -63,7 +63,7 @@ import static com.squareup.leakcanary.Preconditions.checkNotNull;
 
         @Override public void onActivityDestroyed(Activity activity) {
           final WeakReference<Activity> ref = new WeakReference<Activity>(activity);
-          int delay = activity.getClass().getSimpleName().contains("WebView")?182000:32000;
+          int delay = activity.getClass().getSimpleName().contains("WebView")?182000:62000;
           handler.postDelayed(new Runnable() {
             @Override
             public void run() {
