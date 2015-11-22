@@ -115,7 +115,7 @@ public final class AndroidHeapDumper implements HeapDumper {
         if(!TextUtils.isEmpty(owner)){
           owner = "\n呼叫<"+owner+">";
         }
-        tv.setText(refName + "\n内存泄露解析中..."+owner);
+        tv.setText(refName + "\n内存泄漏解析中...");
         toast.setView(v);
         toast.show();
         // Waiting for Idle to make sure Toast gets rendered.
