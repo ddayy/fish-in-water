@@ -285,7 +285,7 @@ public final class DisplayLeakActivity extends Activity {
           }
         });
         invalidateOptionsMenu();
-        setTitle(getString(R.string.leak_canary_leak_list_title, getPackageName()));
+        setTitle(getPackageManager().getApplicationLabel(getApplicationInfo()).toString() + "内存泄漏");
         getActionBar().setDisplayHomeAsUpEnabled(false);
         actionButton.setText(R.string.leak_canary_delete_all);
         actionButton.setOnClickListener(new View.OnClickListener() {

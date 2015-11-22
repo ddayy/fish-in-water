@@ -46,6 +46,14 @@ public class MainActivity extends Activity {
         return null;
       }
     }.execute();
+
+    new AsyncTask<Void, Void, Void>() {
+      @Override protected Void doInBackground(Void... params) {
+        // Do some slow work in background
+        SystemClock.sleep(200000);
+        return null;
+      }
+    }.execute();
   }
 }
 

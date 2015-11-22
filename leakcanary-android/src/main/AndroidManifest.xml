@@ -35,7 +35,7 @@
     <activity
         android:name=".internal.DisplayLeakActivity"
         android:enabled="false"
-        android:label="内存泄露"
+        android:label="内存泄漏"
         android:taskAffinity="com.squareup.leakcanary"
         >
       <intent-filter>

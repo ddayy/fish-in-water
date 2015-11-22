@@ -20,6 +20,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.Log;
 import com.squareup.leakcanary.internal.DisplayLeakActivity;
 import java.io.File;
@@ -106,11 +107,15 @@ public class DisplayLeakService extends AbstractAnalysisResultService {
 
     String contentTitle;
     String appName = getPackageManager().getApplicationLabel(getApplicationInfo()).toString();
-    contentTitle = appName + " 内存泄露";
+    contentTitle = appName + " 内存泄漏";
 
     String contentText;
     if (result.failure == null) {
       contentText = classSimpleName(result.className);
+      String owner = AndroidHeapDumper.refToOwner(classSimpleName(result.className));
+      if(!TextUtils.isEmpty(owner)){
+        contentText += owner;
+      }
     } else {
       contentText = "解析失败";
     }

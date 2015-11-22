@@ -111,34 +111,7 @@ public final class AndroidHeapDumper implements HeapDumper {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.leak_canary_heap_dump_toast, null);
         TextView tv = (TextView)v.findViewById(R.id._leak_toast_msg);
-        String owner="";
-        if(refName.startsWith("TM")) {
-          if (refName.contains("TMFun")||refName.contains("Post")) {
-            owner = "方博";
-          } else if (refName.contains("TMDetail")) {
-            owner = "目天";
-          } else if (refName.contains("Street")|| refName.contains("BrandFeed")) {
-            owner = "奇远";
-          } else if (refName.contains("Cart")) {
-            owner = "少琛";
-          } else if (refName.contains("MyTmall")) {
-            owner = "灵明";
-          } else if (refName.contains("Share") || refName.contains("essagebox")) {
-            owner = "非台";
-          } else if (refName.contains("Homepage")) {
-            owner = "灰风";
-          } else if (refName.contains("Wuse")) {
-            owner = "默燧";
-          } else if (refName.contains("TMSearch")) {
-            owner = "景澈";
-          } else if (refName.contains("Shop")) {
-            owner = "奇远";
-          } else if (refName.contains("TMCommonWebView")) {
-            owner = "源长";
-          } else if (refName.contains("Favorite") || refName.contains("Category")) {
-            owner = "鹄影";
-          }
-        }
+        String owner= refToOwner(refName);
         if(!TextUtils.isEmpty(owner)){
           owner = "\n呼叫<"+owner+">";
         }
@@ -154,6 +127,38 @@ public final class AndroidHeapDumper implements HeapDumper {
         });
       }
     });
+  }
+
+  public static String refToOwner(String refName){
+    String owner = null;
+    if(refName.startsWith("TM")) {
+      if (refName.contains("TMFun")||refName.contains("Post")) {
+        owner = "方博";
+      } else if (refName.contains("TMDetail")) {
+        owner = "目天";
+      } else if (refName.contains("Street")|| refName.contains("BrandFeed")) {
+        owner = "奇远";
+      } else if (refName.contains("Cart")) {
+        owner = "少琛";
+      } else if (refName.contains("MyTmall")) {
+        owner = "灵明";
+      } else if (refName.contains("Share") || refName.contains("essagebox")) {
+        owner = "非台";
+      } else if (refName.contains("Homepage")) {
+        owner = "灰风";
+      } else if (refName.contains("Wuse")) {
+        owner = "默燧";
+      } else if (refName.contains("TMSearch")) {
+        owner = "景澈";
+      } else if (refName.contains("Shop")) {
+        owner = "奇远";
+      } else if (refName.contains("TMCommonWebView")) {
+        owner = "源长";
+      } else if (refName.contains("Favorite") || refName.contains("Category")) {
+        owner = "鹄影";
+      }
+    }
+    return owner;
   }
 
   private void cancelToast(final Toast toast) {
