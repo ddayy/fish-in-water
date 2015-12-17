@@ -32,6 +32,12 @@ import static com.squareup.leakcanary.Preconditions.checkNotNull;
 @TargetApi(ICE_CREAM_SANDWICH) public final class ActivityRefWatcher {
   Handler handler = new Handler(Looper.getMainLooper());
 
+    private static long sCheckDelay = 182000;
+
+    public static void setCheckDelay(long delay){
+        sCheckDelay = delay;
+    }
+
   public static void installOnIcsPlus(Application application, RefWatcher refWatcher) {
     if (SDK_INT < ICE_CREAM_SANDWICH) {
       // If you need to support Android < ICS, override onDestroy() in your base activity.
@@ -72,7 +78,7 @@ import static com.squareup.leakcanary.Preconditions.checkNotNull;
                 ActivityRefWatcher.this.onActivityDestroyed(a);
               }
             }
-          }, 182000);
+          }, sCheckDelay);
         }
       };
 
