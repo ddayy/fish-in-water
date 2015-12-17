@@ -72,7 +72,7 @@ import static com.squareup.leakcanary.Preconditions.checkNotNull;
                 ActivityRefWatcher.this.onActivityDestroyed(a);
               }
             }
-          }, 122000);
+          }, 182000);
         }
       };
 
